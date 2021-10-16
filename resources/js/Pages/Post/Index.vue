@@ -15,12 +15,12 @@
                     </div>
 
                     <div class="mt-2">
-                        <a href="#" class="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline">{{ post.title }}</a>
+                        <a :href="route('posts.show', post)" class="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline">{{ post.title }}</a>
                         <p class="mt-2 text-gray-600 dark:text-gray-300">{{ post.summary }}</p>
                     </div>
 
                     <div class="flex items-center justify-between mt-4">
-                        <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">Read more</a>
+                        <a :href="route('posts.show', post)" class="text-blue-600 dark:text-blue-400 hover:underline">Read more</a>
 
                         <div class="flex items-center">
                             <a class="font-bold text-gray-700 cursor-pointer dark:text-gray-200">{{ post.user.name }}</a>
