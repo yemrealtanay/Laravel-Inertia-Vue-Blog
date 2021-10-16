@@ -34,13 +34,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/allCategories', function 
     return Inertia::render('Category/Index');
 })->name('allCategories');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/createPost', function () {
-    return Inertia::render('Post/Create');
-})->name('createPost');
-
-/*Custom Controller Routes for Posts*/
+/* Custom Controller Routes for Posts */
 Route::get('posts/allIndex', [PostController::class, 'allIndex'])->name('posts.allIndex');
 
-/*Resource Routes*/
+/* Resource Routes */
 Route::resource('posts', PostController::class);
+
 Route::resource('categories', CategoryController::class);

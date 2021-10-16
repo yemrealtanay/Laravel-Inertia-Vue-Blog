@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class PostController extends Controller
 {
@@ -41,7 +45,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        $categories = DB::table('categories')->get();
+
+        return Inertia::render('Post/Create', ['categories' => $categories, 'user' => $user]);
     }
 
     /**
@@ -52,7 +59,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post;
+        $post->user_id = $request->user()->id;
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->category_id = $request->category_id;
+        $post->summary = $request->content;
+        $post->save();
+        return Redirect::route('posts.index');
     }
 
     /**
@@ -97,6 +111,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return Redirect::route('posts.index');
     }
 }

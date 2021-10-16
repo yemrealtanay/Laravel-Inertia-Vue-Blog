@@ -5415,10 +5415,95 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    categories: Object,
+    user: Object
+  },
+  data: function data() {
+    return {
+      form: {
+        title: null,
+        content: null,
+        category_id: null
+      }
+    };
+  },
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    submit: function submit() {
+      this.$inertia.post(route("posts.store", this.form));
+    }
   }
 });
 
@@ -5475,6 +5560,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -5482,6 +5579,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    destroy: function destroy(id) {
+      this.$inertia["delete"](route("posts.destroy", id));
+    }
   }
 });
 
@@ -55582,8 +55684,8 @@ var render = function() {
                           "jet-nav-link",
                           {
                             attrs: {
-                              href: _vm.route("createPost"),
-                              active: _vm.route().current("createPost")
+                              href: _vm.route("posts.create"),
+                              active: _vm.route().current("posts.create")
                             }
                           },
                           [
@@ -58367,7 +58469,164 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n            Create Post\n        ")]
+                [_vm._v("\n      Create Post\n    ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "section",
+                {
+                  staticClass:
+                    "\n        w-full\n        max-w-2xl\n        px-6\n        py-4\n        mx-auto\n        bg-white\n        rounded-md\n        shadow-md\n        dark:bg-gray-800\n      "
+                },
+                [
+                  _c(
+                    "form",
+                    {
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.submit()
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "mt-6" }, [
+                        _c(
+                          "div",
+                          { staticClass: "items-center mx-2 md:flex" },
+                          [
+                            _c("div", { staticClass: "w-full mx-2" }, [
+                              _c("label", { attrs: { for: "category_id" } }, [
+                                _vm._v("Select Category: ")
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.category_id,
+                                      expression: "form.category_id"
+                                    }
+                                  ],
+                                  attrs: {
+                                    name: "category_id",
+                                    id: "category_id"
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.form,
+                                        "category_id",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                _vm._l(_vm.categories, function(category) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: category.id,
+                                      domProps: { value: category.id }
+                                    },
+                                    [_vm._v(_vm._s(category.name))]
+                                  )
+                                }),
+                                0
+                              )
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mt-4" }, [
+                        _c("label", { attrs: { for: "title" } }, [
+                          _vm._v("Title: ")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.title,
+                              expression: "form.title"
+                            }
+                          ],
+                          staticClass:
+                            "\n                    w-full\n                    px-4\n                    py-2\n                    mt-2\n                    border\n                    rounded-md\n                    focus:outline-none focus:ring-1 focus:ring-blue-600\n                  ",
+                          attrs: { type: "text", id: "title" },
+                          domProps: { value: _vm.form.title },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "title", $event.target.value)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mt-4" }, [
+                        _c("label", { attrs: { for: "content" } }, [
+                          _vm._v("Content: ")
+                        ]),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.content,
+                              expression: "form.content"
+                            }
+                          ],
+                          staticClass:
+                            "\n                    w-full\n                    px-4\n                    py-2\n                    mt-2\n                    border\n                    rounded-md\n                    focus:outline-none focus:ring-1 focus:ring-blue-600\n                  ",
+                          attrs: { id: "content", type: "text" },
+                          domProps: { value: _vm.form.content },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "content", $event.target.value)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "flex items-center mt-4" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "px-6 py-7 text-white bg-gray-900 rounded",
+                            attrs: { type: "submit" }
+                          },
+                          [_vm._v("\n                  Save\n                ")]
+                        )
+                      ])
+                    ]
+                  )
+                ]
               )
             ]
           },
@@ -58375,18 +58634,7 @@ var render = function() {
         }
       ])
     },
-    [
-      _vm._v(" "),
-      _c("div", { staticClass: "py-12" }, [
-        _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
-          _c(
-            "div",
-            { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
-            [_vm._v("\n                Create\n            ")]
-          )
-        ])
-      ])
-    ]
+    [_vm._v(" "), _c("div", { staticClass: "py-12" })]
   )
 }
 var staticRenderFns = []
@@ -58489,7 +58737,7 @@ var render = function() {
                       _c(
                         "div",
                         {
-                          staticClass: "flex items-center justify-between mt-4"
+                          staticClass: "flex items-start justify-between mt-4"
                         },
                         [
                           _c(
@@ -58513,7 +58761,40 @@ var render = function() {
                             )
                           ])
                         ]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "flex m-4 justify-start" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn px-4 py-2 m-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-200 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80"
+                          },
+                          [
+                            _vm._v(
+                              "\n                        Edit\n                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn px-4 py-2 m-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-md hover:bg-red-200 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80",
+                            on: {
+                              click: function($event) {
+                                return _vm.destroy(post.id)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        Delete\n                    "
+                            )
+                          ]
+                        )
+                      ])
                     ]
                   )
                 ])

@@ -1,27 +1,112 @@
 <template>
-    <app-layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Create Post
-            </h2>
-        </template>
+  <app-layout>
+    <template #header>
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        Create Post
+      </h2>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    Create
+      <section
+        class="
+          w-full
+          max-w-2xl
+          px-6
+          py-4
+          mx-auto
+          bg-white
+          rounded-md
+          shadow-md
+          dark:bg-gray-800
+        "
+      >
+        <form @submit.prevent="submit()">
+        <div class="mt-6">
+            <div class="items-center mx-2 md:flex">
+                
+                <div class="w-full mx-2">
+                    <label for="category_id">Select Category: </label>
+                    <select name="category_id" id="category_id" v-model="form.category_id">
+                        <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+                    </select>
                 </div>
             </div>
         </div>
-    </app-layout>
+
+        <div class="mt-4">          
+                  <label for="title">Title: </label>
+                  <input
+                    type="text"
+                    id="title"
+                    v-model="form.title"
+                    class="
+                      w-full
+                      px-4
+                      py-2
+                      mt-2
+                      border
+                      rounded-md
+                      focus:outline-none focus:ring-1 focus:ring-blue-600
+                    "
+                  />
+                </div>
+
+                <div class="mt-4">
+                  <label for="content">Content: </label>
+                  <textarea
+                    id="content"
+                    type="text"
+                    v-model="form.content"
+                    class="
+                      w-full
+                      px-4
+                      py-2
+                      mt-2
+                      border
+                      rounded-md
+                      focus:outline-none focus:ring-1 focus:ring-blue-600
+                    "
+                  ></textarea>
+                </div>
+
+                <div class="flex items-center mt-4">
+                  <button
+                    type="submit"
+                    class="px-6 py-7 text-white bg-gray-900 rounded"
+                  >
+                    Save
+                  </button>
+                </div>
+              </form>
+      </section>
+    </template>
+
+    <div class="py-12"></div>
+  </app-layout>
 </template>
 
 <script>
-import AppLayout from '@/Layouts/AppLayout'
+import AppLayout from "@/Layouts/AppLayout";
 
 export default {
-    components: {
-        AppLayout,
+  props:{
+      categories: Object,
+      user: Object,
+},
+  data() {
+    return {
+      form: {
+        title: null,
+        content: null,
+        category_id: null,
+      },
+    };
+  },
+  components: {
+    AppLayout,
+  },
+  methods: {
+    submit() {
+      this.$inertia.post(route("posts.store", this.form));
     },
-}
+  },
+};
 </script>

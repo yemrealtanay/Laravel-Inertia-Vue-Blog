@@ -33,7 +33,7 @@
                                     My Posts
                                 </jet-nav-link>
 
-                                <jet-nav-link :href="route('createPost')" :active="route().current('createPost')">
+                                <jet-nav-link :href="route('posts.create')" :active="route().current('posts.create')">
                                     Create Post
                                 </jet-nav-link>
                             </div>
