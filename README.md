@@ -16,6 +16,8 @@ Ayrıca bu projenin yapımıyla alakalı bir rehber hazırlayıp medium'a ataca�
 
 Projeyi clone'layın;
 
+<code> composer install </code>
+
 <code> npm install </code>
 
 <code> npm run dev </code>
