@@ -88,7 +88,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+
+        $categories = DB::table('categories')->get();
+
+        return Inertia::render('Post/Edit', ['post' => $post, 'categories' => $categories]);
+
     }
 
     /**
@@ -100,7 +104,19 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+    
+        $data = $request->validate(
+            [
+                'title' => ['required', 'max:90'],
+                'content' => ['required'],
+                'category_id' => ['required'],
+            ]
+        );
+        $post->title = $data['title'];
+        $post->content = $data['content'];
+        $post->category_id = $data['category_id'];
+        $post->save();
+        return Redirect::route('posts.index');
     }
 
     /**

@@ -29,9 +29,9 @@
                     </div>
                     <div class="flex m-4 justify-start">
 
-                        <button class="btn px-4 py-2 m-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-200 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
+                        <a :href="route('posts.edit', post)" class="btn px-4 py-2 m-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-200 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
                             Edit
-                        </button>
+                        </a>
 
                         <button @click="destroy(post.id)" class="btn px-4 py-2 m-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-md hover:bg-red-200 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
                             Delete
