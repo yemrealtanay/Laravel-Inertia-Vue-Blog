@@ -27,4 +27,6 @@ Projeyi clone'layın;
 ### Sorularınız için mail atmaktan ve Laravel İstanbul Telegram Grubuna katılmaktan çekinmeyin...
 
 Aynısının vue3 ile yapılmış hali: https://github.com/yemrealtanay/Inertia.js-Laravel-Vue3-CRUD
+
+Etkinliğin kaydı için: https://www.youtube.com/watch?v=furZe55klJ8
     
