@@ -25,4 +25,6 @@ Projeyi clone'layın;
 <code> npm watch </code>
 
 ### Sorularınız için mail atmaktan ve Laravel İstanbul Telegram Grubuna katılmaktan çekinmeyin...
+
+Aynısının vue3 ile yapılmış hali: https://github.com/yemrealtanay/Inertia.js-Laravel-Vue3-CRUD
     
