@@ -29,4 +29,6 @@ Projeyi clone'layın;
 Aynısının vue3 ile yapılmış hali: https://github.com/yemrealtanay/Inertia.js-Laravel-Vue3-CRUD
 
 Etkinliğin kaydı için: https://www.youtube.com/watch?v=furZe55klJ8
+
+Temel Crud işlemleriyle ilgili makalem: https://medium.com/@y.emrealtanay?p=80814631e38
     
